@@ -1,0 +1,33 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Feeds</h1>
+  <% if @feeds.any? %> 
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Url</th>
+          <th colspan="3">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>      
+        <% @feeds.each do |feed| %>
+          <tr>
+            <td><%= feed.url %></td>
+            <td><%= link_to 'Show', feed %></td>
+            <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
+            <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    Feeds are not available, click New Feed to add.
+  <% end %>
+
+  <div style="margin-top: 10px">
+    <%= link_to 'New Feed', new_feed_path, class: 'btn btn-primary' %>
+    <%= link_to 'Read latest posts', post_feeds_path, class: 'btn btn-primary' %>
+  </div>
+</div>

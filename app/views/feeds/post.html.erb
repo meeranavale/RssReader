@@ -1,0 +1,19 @@
+<div class="container">
+  <h2> Latest post </h2>
+  <% if @posts_data.present? %>  
+	  <% @posts_data.each do |post| %>
+	    <div class="panel panel-default">
+	      <div class="panel-body">
+	        <%= link_to post[:title], post[:link], target: "_blank" %> - <i> published <%= time_ago_in_words(post[:pub_date]) %> ago.</i>
+	      </div>
+	    </div>
+	  <% end %>
+  <% else %>
+  	<div class="panel panel-default">
+      <div class="panel-body">
+        Currently posts are not available
+      </div>
+    </div>
+  <% end %>
+</div>
+		
